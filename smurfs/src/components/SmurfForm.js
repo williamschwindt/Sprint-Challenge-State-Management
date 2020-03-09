@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { postSmurf } from '../actions/index';
 import { connect } from "react-redux";
 
-const SmurfForm = ({ postSmurf }) => {
+const SmurfForm = ({ postSmurf, isSetting, error }) => {
     const [ smurf, setSmurf ] = useState({
         name: '',
         age: '',
@@ -14,8 +14,15 @@ const SmurfForm = ({ postSmurf }) => {
       }
 
       const submitHandler = () => {
-        console.log(smurf);
         postSmurf(smurf);
+      }
+
+      if (isSetting) {
+        return <h2>Setting Your Smurf</h2>
+      }
+    
+      else if (error !== '') {
+        return <h2>We Couldn't Set Your Smurf, Try Again?</h2>
       }
 
     return (
