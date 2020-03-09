@@ -1,14 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import { connect } from 'react-redux';
 import { getSmurfs } from '../actions/index';
+import SmurfForm from './SmurfForm';
 
 const App = ({ getSmurfs, smurfDetails, isFetching, error}) => {
-  const [ smurf, setSmurf ] = useState({
-    name: '',
-    age: null,
-    height: ''
-  });
 
   if (isFetching) {
     return <h2>Finding The Smurfs</h2>
@@ -30,6 +26,7 @@ const App = ({ getSmurfs, smurfDetails, isFetching, error}) => {
           </div>
         )
       })}
+      <SmurfForm />
     </div>
   );
 }
@@ -43,4 +40,4 @@ const mapStateToProps = state => {
 
 }
 
-export default connect(mapStateToProps, {getSmurfs} )(App);
+export default connect(mapStateToProps, { getSmurfs })(App);

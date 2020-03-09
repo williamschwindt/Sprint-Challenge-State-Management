@@ -1,8 +1,9 @@
-import { FETCHING_SMURFS_START, FETCHING_SMURFS_SUCCESS, FETCHING_SMURFS_FAILURE } from '../actions/index';
+import { FETCHING_SMURFS_START, FETCHING_SMURFS_SUCCESS, FETCHING_SMURFS_FAILURE, SETTING_SMURFS_START } from '../actions/index';
 
 const initialState = {
     smurfDetails: [],
     isFetching: false,
+    isSetting: false,
     error: ''
 }
 
@@ -24,6 +25,11 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 error: action.payload,
                 isFetching: false
+            }
+        case SETTING_SMURFS_START :
+            return {
+                ...state,
+                isSetting: true
             }
         default :
             return state;
