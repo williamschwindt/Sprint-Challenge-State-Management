@@ -1,7 +1,7 @@
 import { FETCHING_SMURFS_START, FETCHING_SMURFS_SUCCESS, FETCHING_SMURFS_FAILURE } from '../actions/index';
 
 const initialState = {
-    smurfDetails: {},
+    smurfDetails: [],
     isFetching: false,
     error: ''
 }

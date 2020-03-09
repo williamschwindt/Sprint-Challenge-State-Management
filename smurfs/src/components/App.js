@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import "./App.css";
 import { connect } from 'react-redux';
 import { getSmurfs } from '../actions/index';
-import { Smurfs } from '../components/Smurfs';
 
-const app = ({ getSmurfs, smurfDetails, isFetching, error}) => {
+const App = ({ getSmurfs, smurfDetails, isFetching, error}) => {
   const [ smurf, setSmurf ] = useState({
     name: '',
     age: null,
@@ -21,8 +20,16 @@ const app = ({ getSmurfs, smurfDetails, isFetching, error}) => {
 
   return (
     <div>
-      <Smurfs />
       <button onClick={getSmurfs}>See The Smurfs</button>
+      {smurfDetails.map(smurf => {
+        return (
+          <div>
+            <h2>{smurf.name}</h2>
+            <h2>Age: {smurf.age}</h2>
+            <h2>Height: {smurf.height}</h2>
+          </div>
+        )
+      })}
     </div>
   );
 }
@@ -36,4 +43,4 @@ const mapStateToProps = state => {
 
 }
 
-export default App;
+export default connect(mapStateToProps, {getSmurfs} )(App);
